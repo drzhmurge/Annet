@@ -553,6 +553,32 @@ a {
   letter-spacing: -0.02em;
 }
 
+.plan-currency {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0;
+  opacity: 0.7;
+}
+
+.plan-per-month {
+  margin-top: 6px;
+  font-size: 12px;
+  color: var(--text-dim);
+}
+
+.plan-promo {
+  margin-top: 6px;
+  font-size: 12px;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.plan-badge-save {
+  background: var(--bg-card);
+  color: var(--text);
+  border: 1px solid var(--border-card);
+}
+
 /* ═══════════════════════════════════════════════
    How It Works
 ═══════════════════════════════════════════════ */
