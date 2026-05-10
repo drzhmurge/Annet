@@ -1955,6 +1955,9 @@ html.reveal-pending .reveal.revealed {
   margin: 0 0 6px;
   letter-spacing: -0.01em;
 }
+.hero-sub-small {
+  color: #ffffff;;
+}
 
 .cabinet-alt-sub {
   font-size: 14px;
