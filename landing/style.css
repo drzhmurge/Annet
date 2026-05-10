@@ -511,6 +511,26 @@ a {
   margin-bottom: 40px;
   max-width: 420px;
 }
+.accent-white {
+  color: #ffffff;
+}
+
+.animate-bounce {
+  animation: bounce 1s ease-in-out infinite;
+}
+
+.pulse {
+  animation: pulse 1s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
 
 .hero-actions {
   display: flex;
@@ -522,7 +542,6 @@ a {
 .telegram-help-hint {
   margin: -10px 0 28px;
   max-width: 480px;
-  font-size: 13px;
   line-height: 1.6;
   color: var(--text-muted);
 }
