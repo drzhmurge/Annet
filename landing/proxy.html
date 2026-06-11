@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Бесплатный MTProto прокси для Telegram — Annet Cloud</title>
+  <meta name="description" content="Бесплатный MTProto прокси для Telegram. Разблокируй Telegram за 10 секунд — без регистрации, без VPN, навсегда бесплатно.">
+  <meta property="og:title" content="Бесплатный MTProto прокси для Telegram — Annet Cloud">
+  <meta property="og:description" content="Разблокируй Telegram за 10 секунд. Бесплатно, без регистрации и без VPN.">
+  <meta property="og:type" content="website">
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script>document.documentElement.classList.add('reveal-pending')</script>
+
+  <!-- Yandex.Metrika counter -->
+  <script type="text/javascript">
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=108239554', 'ym');
+    ym(108239554, 'init', {ssr:true, webvisor:true, clickmap:true, referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+  </script>
+  <noscript><div><img src="https://mc.yandex.ru/watch/108239554" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+  <!-- /Yandex.Metrika counter -->
+
+  <style>
+    /* ── Page shell ── */
+    .pl-page {
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── Header (logo-only variant) ── */
+    .pl-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(13, 13, 13, 0.82);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .pl-header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+
+    .pl-support-link {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-dim);
+      transition: color var(--transition);
+    }
+
+    .pl-support-link:hover {
+      color: var(--text-muted);
+    }
+
+    /* ── Hero ── */
+    .pl-hero {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 72px 24px 56px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pl-hero::before {
+      content: '';
+      position: absolute;
+      top: -160px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 700px;
+      height: 500px;
+      background: radial-gradient(ellipse at center, rgba(213, 96, 0, 0.13) 0%, transparent 68%);
+      pointer-events: none;
+    }
+
+    .pl-hero-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 640px;
+      width: 100%;
+    }
+
+    .pl-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-dim);
+      border: 1px solid var(--accent-border);
+      border-radius: var(--radius-sm);
+      padding: 5px 12px;
+      margin-bottom: 20px;
+    }
+
+    .pl-eyebrow-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: eyebrowPulse 1.8s ease-in-out infinite;
+      flex-shrink: 0;
+    }
+
+    @keyframes eyebrowPulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.55; transform: scale(0.85); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .pl-eyebrow-dot { animation: none; }
+    }
+
+    .pl-hero-title {
+      font-size: clamp(30px, 6vw, 52px);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.12;
+      margin-bottom: 16px;
+    }
+
+    .pl-hero-title .accent {
+      color: var(--accent);
+    }
+
+    .pl-hero-sub {
+      font-size: clamp(15px, 2vw, 17px);
+      color: var(--text-muted);
+      line-height: 1.65;
+      margin-bottom: 32px;
+      max-width: 520px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ── Live counter ── */
+    .pl-live-bar {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius-lg);
+      padding: 10px 20px;
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 40px;
+      transition: border-color var(--transition);
+    }
+
+    .pl-live-bar:hover {
+      border-color: var(--accent-border);
+    }
+
+    .pl-live-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #3ecf5d;
+      box-shadow: 0 0 6px rgba(62, 207, 93, 0.6);
+      flex-shrink: 0;
+      animation: livePulse 2.2s ease-in-out infinite;
+    }
+
+    @keyframes livePulse {
+      0%, 100% { opacity: 1; box-shadow: 0 0 6px rgba(62, 207, 93, 0.6); }
+      50% { opacity: 0.65; box-shadow: 0 0 12px rgba(62, 207, 93, 0.35); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .pl-live-dot { animation: none; }
+    }
+
+    .pl-live-count {
+      font-weight: 700;
+      color: var(--text);
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* ── Connect card ── */
+    .pl-connect-wrap {
+      display: flex;
+      justify-content: center;
+      padding: 0 24px 64px;
+    }
+
+    .pl-connect-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      width: 100%;
+      max-width: 520px;
+      position: relative;
+      overflow: hidden;
+      transition: border-color var(--transition), box-shadow var(--transition);
+    }
+
+    .pl-connect-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent) 0%, var(--accent-hover) 50%, var(--accent) 100%);
+      background-size: 200% 100%;
+      animation: topBarShift 3s linear infinite;
+    }
+
+    @keyframes topBarShift {
+      0% { background-position: 0% 0%; }
+      100% { background-position: 200% 0%; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .pl-connect-card::before { animation: none; }
+    }
+
+    .pl-connect-card:hover {
+      border-color: var(--accent-border);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+    }
+
+    .pl-connect-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 8px;
+    }
+
+    .pl-server-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 12px 16px;
+      margin-bottom: 20px;
+    }
+
+    .pl-server-addr {
+      font-family: 'SF Mono', 'Fira Code', 'Courier New', monospace;
+      font-size: 13px;
+      color: var(--text-muted);
+      letter-spacing: 0.02em;
+    }
+
+    .pl-server-badge {
+      font-size: 11px;
+      font-weight: 700;
+      color: #3ecf5d;
+      background: rgba(62, 207, 93, 0.1);
+      border: 1px solid rgba(62, 207, 93, 0.2);
+      border-radius: 6px;
+      padding: 3px 9px;
+      letter-spacing: 0.04em;
+      flex-shrink: 0;
+    }
+
+    .pl-connect-btn-wrap {
+      margin-bottom: 24px;
+    }
+
+    .pl-connect-btn-wrap .btn {
+      width: 100%;
+      justify-content: center;
+      padding: 16px 20px;
+      font-size: 16px;
+      font-weight: 800;
+    }
+
+    .pl-divider {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .pl-divider-line {
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .pl-divider-text {
+      font-size: 11px;
+      color: var(--text-dim);
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      flex-shrink: 0;
+    }
+
+    .pl-qr-block {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .pl-qr-label {
+      font-size: 12px;
+      color: var(--text-dim);
+      text-align: center;
+    }
+
+    .pl-qr-img {
+      width: 148px;
+      height: 148px;
+      object-fit: contain;
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 8px;
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+
+    .pl-qr-img:hover {
+      transform: scale(1.04);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    }
+
+    /* ── Steps strip ── */
+    .pl-steps-wrap {
+      padding: 0 24px 64px;
+    }
+
+    /* ── Benefits section ── */
+    .pl-benefits {
+      padding: 64px 24px;
+      background: var(--bg-alt);
+    }
+
+    .pl-benefits-title {
+      font-size: clamp(20px, 2.8vw, 28px);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      text-align: center;
+      margin-bottom: 36px;
+    }
+
+    .pl-benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      max-width: 880px;
+      margin: 0 auto;
+    }
+
+    .pl-benefit-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius-lg);
+      padding: 24px 20px;
+      text-align: center;
+      transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pl-benefit-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+      pointer-events: none;
+    }
+
+    .pl-benefit-card:hover {
+      border-color: var(--accent-border);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+    }
+
+    .pl-benefit-icon {
+      width: 44px;
+      height: 44px;
+      background: var(--accent-dim);
+      border: 1px solid var(--accent-border);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 14px;
+      color: var(--accent);
+      transition: transform var(--dur-micro) var(--ease-spring);
+    }
+
+    .pl-benefit-card:hover .pl-benefit-icon {
+      transform: scale(1.1) rotate(-5deg);
+    }
+
+    .pl-benefit-name {
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 6px;
+      letter-spacing: -0.01em;
+    }
+
+    .pl-benefit-desc {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    /* ── Upsell block ── */
+    .pl-upsell {
+      padding: 64px 24px;
+    }
+
+    .pl-upsell-inner {
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: center;
+      background: var(--bg-card);
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius-lg);
+      padding: 44px 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pl-upsell-inner::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(213, 96, 0, 0.08) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .pl-upsell-eyebrow {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 14px;
+    }
+
+    .pl-upsell-title {
+      font-size: clamp(22px, 3.5vw, 30px);
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      margin-bottom: 12px;
+      position: relative;
+    }
+
+    .pl-upsell-sub {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.65;
+      margin-bottom: 28px;
+      position: relative;
+    }
+
+    .pl-upsell-actions {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+      position: relative;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 860px) {
+      .pl-benefits-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 560px) {
+      .pl-hero {
+        padding: 56px 20px 44px;
+      }
+
+      .pl-connect-card {
+        padding: 24px 20px;
+      }
+
+      .pl-server-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+      }
+
+      .pl-upsell-inner {
+        padding: 32px 24px;
+      }
+
+      .pl-benefits-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+
+      .pl-benefit-card {
+        padding: 20px 14px;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .pl-benefits-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body class="pl-page">
+
+  <!-- ═══════════════════════════════════════
+       HEADER
+  ═══════════════════════════════════════ -->
+  <header class="pl-header">
+    <div class="container pl-header-inner">
+      <a href="index.html" class="logo">
+        <img src="assets/logo.png" alt="Annet Cloud">
+      </a>
+      <a href="tg://resolve?domain=annetcloud_support" class="pl-support-link">Поддержка</a>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ═══════════════════════════════════════
+         HERO
+    ═══════════════════════════════════════ -->
+    <section class="pl-hero">
+      <div class="pl-hero-inner">
+        <div class="pl-eyebrow reveal">
+          <span class="pl-eyebrow-dot"></span>
+          Бесплатно и без регистрации
+        </div>
+
+        <h1 class="pl-hero-title reveal">
+          MTProto прокси<br>
+          для <span class="accent">Telegram</span>
+        </h1>
+
+        <p class="pl-hero-sub reveal">
+          Telegram заблокирован в вашей сети? Подключите прокси — это займёт 10 секунд.
+          Бесплатно, без VPN и без регистрации.
+        </p>
+
+        <div class="pl-live-bar reveal" id="live-bar" aria-live="polite" aria-atomic="true">
+          <span class="pl-live-dot" aria-hidden="true"></span>
+          <span>Сейчас подключено:&nbsp;</span>
+          <span class="pl-live-count" id="live-count">—</span>
+          <span>&nbsp;пользователей</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         CONNECT CARD
+    ═══════════════════════════════════════ -->
+    <div class="pl-connect-wrap">
+      <div class="pl-connect-card reveal">
+
+        <div class="pl-connect-label">Сервер подключения</div>
+        <div class="pl-server-row">
+          <span class="pl-server-addr">tg.knight.annet.cloud:10443</span>
+          <span class="pl-server-badge">● Онлайн</span>
+        </div>
+
+        <div class="pl-connect-btn-wrap">
+          <a href="tg://proxy?server=tg.knight.annet.cloud&port=10443&secret=7u5hbm5ldC5jbG91ZCcNKEI1M2Zsb3dlcnMuY29t"
+             class="btn btn-primary btn-hud"
+             onclick="ym(108239554,'reachGoal','proxy_connect'); return true;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+              <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+            </svg>
+            Подключить прокси
+          </a>
+        </div>
+
+        <div class="pl-divider">
+          <div class="pl-divider-line"></div>
+          <span class="pl-divider-text">или сканируйте с другого устройства</span>
+          <div class="pl-divider-line"></div>
+        </div>
+
+        <div class="pl-qr-block">
+          <p class="pl-qr-label">QR-код для сканирования</p>
+          <img src="assets/proxy-1.jpg" alt="QR-код для подключения прокси" class="pl-qr-img"
+               onclick="ym(108239554,'reachGoal','proxy_qr'); return true;">
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════
+         3-STEP STRIP
+    ═══════════════════════════════════════ -->
+    <div class="pl-steps-wrap">
+      <div class="proxy-after reveal" style="max-width:640px; margin:0 auto;">
+        <div class="proxy-after-step">
+          <span class="proxy-after-num">1</span>
+          <span>Нажмите «Подключить прокси» — Telegram откроет диалог</span>
+        </div>
+        <div class="proxy-after-arrow">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="proxy-after-step">
+          <span class="proxy-after-num">2</span>
+          <span>Примите подключение — значок сервера появится в настройках</span>
+        </div>
+        <div class="proxy-after-arrow">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="proxy-after-step">
+          <span class="proxy-after-num">3</span>
+          <span>Telegram заработает — пользуйтесь без ограничений</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════
+         BENEFITS
+    ═══════════════════════════════════════ -->
+    <section class="pl-benefits">
+      <h2 class="pl-benefits-title reveal">Почему наш прокси</h2>
+      <div class="pl-benefits-grid">
+
+        <div class="pl-benefit-card reveal">
+          <div class="pl-benefit-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="20 12 20 22 4 22 4 12"/>
+              <rect x="2" y="7" width="20" height="5"/>
+              <line x1="12" y1="22" x2="12" y2="7"/>
+              <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/>
+              <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/>
+            </svg>
+          </div>
+          <div class="pl-benefit-name">Бесплатно навсегда</div>
+          <div class="pl-benefit-desc">Без ограничений по времени и трафику</div>
+        </div>
+
+        <div class="pl-benefit-card reveal" style="transition-delay:.07s">
+          <div class="pl-benefit-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+              <circle cx="12" cy="7" r="4"/>
+              <line x1="18" y1="8" x2="23" y2="13"/>
+              <line x1="23" y1="8" x2="18" y2="13"/>
+            </svg>
+          </div>
+          <div class="pl-benefit-name">Без регистрации</div>
+          <div class="pl-benefit-desc">Никаких аккаунтов и личных данных</div>
+        </div>
+
+        <div class="pl-benefit-card reveal" style="transition-delay:.14s">
+          <div class="pl-benefit-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              <polyline points="9 12 11 14 15 10"/>
+            </svg>
+          </div>
+          <div class="pl-benefit-name">Работает без VPN</div>
+          <div class="pl-benefit-desc">Прямо в Telegram, приложения не нужны</div>
+        </div>
+
+        <div class="pl-benefit-card reveal" style="transition-delay:.21s">
+          <div class="pl-benefit-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="2" y1="12" x2="22" y2="12"/>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+            </svg>
+          </div>
+          <div class="pl-benefit-name">Серверы в Европе</div>
+          <div class="pl-benefit-desc">Быстрое и стабильное соединение</div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         UPSELL
+    ═══════════════════════════════════════ -->
+    <section class="pl-upsell">
+      <div class="pl-upsell-inner reveal">
+        <div class="pl-upsell-eyebrow">Нужна полная защита?</div>
+        <h2 class="pl-upsell-title">Попробуйте VPN бесплатно</h2>
+        <p class="pl-upsell-sub">
+          Прокси открывает только Telegram. Для защиты всего трафика и всех приложений
+          подключите Annet VPN — 7 дней пробного периода бесплатно, без карты.
+        </p>
+        <div class="pl-upsell-actions">
+          <a href="https://t.me/annetcloud_bot"
+             class="btn btn-primary btn-hud js-bot-trial"
+             target="_blank" rel="noopener"
+             onclick="ym(108239554,'reachGoal','proxy_upsell'); return true;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248-1.97 9.28c-.146.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L8.984 13.64l-2.961-.924c-.644-.204-.657-.643.135-.953l11.571-4.461c.537-.194 1.006.131.833.946z"/>
+            </svg>
+            7 дней бесплатно
+          </a>
+          <a href="index.html" class="btn btn-ghost">Узнать больше</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ═══════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <img src="assets/logo.png" alt="Annet Cloud" class="footer-logo">
+      </div>
+      <nav class="footer-nav">
+        <a href="index.html">Главная</a>
+        <a href="https://t.me/annetcloud_bot" class="js-bot-link" target="_blank" rel="noopener"
+           onclick="ym(108239554,'reachGoal','bot_click'); return true;">Бот</a>
+        <a href="tg://resolve?domain=annetcloud_support">Поддержка</a>
+        <a href="privacy.html">Конфиденциальность</a>
+      </nav>
+    </div>
+    <div class="container footer-copy">
+      <p>© 2025 Annet Cloud. Сервис предназначен для обеспечения конфиденциальности и защиты трафика в сети.</p>
+    </div>
+  </footer>
+
+  <!-- ═══════════════════════════════════════
+       SCRIPTS
+  ═══════════════════════════════════════ -->
+
+  <!-- Live stats counter -->
+  <script>
+    (function () {
+      var STATS_URL = 'https://api.annet.cloud/api/mtproto/proxy-stats';
+      var POLL_INTERVAL = 60000;
+      var countEl = document.getElementById('live-count');
+      var barEl = document.getElementById('live-bar');
+
+      function formatCount(n) {
+        return n.toLocaleString('ru-RU');
+      }
+
+      function loadStats() {
+        fetch(STATS_URL)
+          .then(function (r) { return r.ok ? r.json() : Promise.reject(r.status); })
+          .then(function (data) {
+            if (typeof data.ext_connections === 'number') {
+              countEl.textContent = formatCount(data.ext_connections);
+              if (barEl) barEl.title = 'Обновлено только что';
+            }
+          })
+          .catch(function () {});
+      }
+
+      loadStats();
+      setInterval(loadStats, POLL_INTERVAL);
+    })();
+  </script>
+
+  <!-- UTM / start_code / start_promo pass-through -->
+  <script>
+    (function () {
+      var BOT_BASE = 'https://t.me/annetcloud_bot';
+      var CABINET_URL = 'https://my.annet.online/login';
+
+      function sanitizeStartParam(raw) {
+        if (!raw) return null;
+        raw = raw.trim();
+        if (!raw) return null;
+        return raw.replace(/[^a-zA-Z0-9_-]/g, '') || null;
+      }
+
+      function getStartCode() {
+        return sanitizeStartParam(new URLSearchParams(window.location.search).get('start_code'));
+      }
+
+      function getStartPromo() {
+        return sanitizeStartParam(new URLSearchParams(window.location.search).get('start_promo'));
+      }
+
+      function getYclid() {
+        return new URLSearchParams(window.location.search).get('yclid') || '';
+      }
+
+      function buildBotPayload(prefix, value) {
+        if (!value) return null;
+        var payload = prefix + value;
+        return payload.length > 64 ? payload.slice(0, 64) : payload;
+      }
+
+      function buildBotStart(isTrial) {
+        var yclid = getYclid();
+        var code = getStartCode();
+        var promo = getStartPromo();
+        if (yclid && /^\d{1,19}$/.test(yclid)) {
+          var suffix = '';
+          if (promo) suffix = '-p_' + promo.replace(/[^a-zA-Z0-9_-]/g, '').slice(0, 30);
+          else if (code) suffix = '-c_' + code.replace(/[^a-zA-Z0-9_-]/g, '').slice(0, 30);
+          else if (isTrial) suffix = '-t';
+          var yclidPayload = 'y_' + yclid + suffix;
+          return yclidPayload.length <= 64 ? yclidPayload : ('y_' + yclid);
+        }
+        if (isTrial) return 't';
+        if (promo) return buildBotPayload('promo_', promo);
+        if (code) return buildBotPayload('code_', code);
+        return null;
+      }
+
+      function updateLinks() {
+        var code = getStartCode();
+        var promo = getStartPromo();
+
+        var botPayload = buildBotStart(false);
+        var botHref = botPayload ? BOT_BASE + '?start=' + encodeURIComponent(botPayload) : BOT_BASE;
+        document.querySelectorAll('a.js-bot-link').forEach(function (a) {
+          a.href = botHref;
+        });
+
+        var trialPayload = buildBotStart(true);
+        var trialHref = trialPayload ? BOT_BASE + '?start=' + encodeURIComponent(trialPayload) : BOT_BASE;
+        document.querySelectorAll('a.js-bot-trial').forEach(function (a) {
+          a.href = trialHref;
+        });
+
+        var ref = promo || code;
+        var cabinetHref = ref ? CABINET_URL + '?ref=' + encodeURIComponent(ref) : CABINET_URL;
+        document.querySelectorAll('a.js-cabinet-link').forEach(function (a) {
+          a.href = cabinetHref;
+        });
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', updateLinks);
+      } else {
+        updateLinks();
+      }
+    })();
+  </script>
+
+  <!-- Scroll-reveal -->
+  <script>
+    (function () {
+      if (!document.documentElement.classList.contains('reveal-pending')) return;
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var nodes = document.querySelectorAll('.reveal');
+      if (!nodes.length) return;
+      if (reduce) {
+        nodes.forEach(function (el) { el.classList.add('revealed'); });
+        return;
+      }
+      var obs = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add('revealed');
+            obs.unobserve(entry.target);
+          });
+        },
+        { rootMargin: '0px 0px -7% 0px', threshold: 0.08 }
+      );
+      nodes.forEach(function (el) { obs.observe(el); });
+    })();
+  </script>
+
+</body>
+</html>
