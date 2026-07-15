@@ -9,6 +9,20 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+
+  <!-- Yandex.Metrika counter -->
+  <script type="text/javascript">
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=108239554', 'ym');
+    ym(108239554, 'init', {ssr:true, webvisor:true, clickmap:true, referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+  </script>
+  <noscript><div><img src="https://mc.yandex.ru/watch/108239554" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+  <!-- /Yandex.Metrika counter -->
+
   <style>
     .tc-page {
       min-height: 100svh;
@@ -172,6 +186,24 @@
       margin-bottom: 16px;
     }
 
+    .tc-free-tg-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .tc-download-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .tc-download-row .btn {
+      flex: 1;
+      min-width: 120px;
+      justify-content: center;
+    }
+
     /* ── Назад ── */
     .tc-back {
       text-align: center;
@@ -263,17 +295,60 @@
         </p>
       </div>
 
-      <!-- Шаг 2: Открыть бота -->
+      <!-- Шаг 2: Бесплатная TG-подписка -->
       <div class="tc-step">
         <div class="tc-step-head">
           <span class="tc-step-num">2</span>
+          <span class="tc-step-title">Или подписка только для Telegram</span>
+        </div>
+        <p class="tc-step-2-note">
+          Если прокси не помогает — скачайте Incy и откройте конфиг в приложении.
+          Работает только Telegram; это не полный VPN.
+        </p>
+        <div class="tc-free-tg-actions">
+          <a href="https://api.annet.cloud/api/vpn/deeplink/open?target=incy%3A%2F%2Fadd%2Fhttps%3A%2F%2Frem.annet.cloud%3A9443%2Fapi%2Fsub%2Fo4uyGMSEXup1YDvw&amp;sub=https%3A%2F%2Frem.annet.cloud%3A9443%2Fapi%2Fsub%2Fo4uyGMSEXup1YDvw"
+             class="btn btn-primary btn-hud"
+             style="width:100%;justify-content:center;"
+             target="_blank" rel="noopener"
+             onclick="ym(108239554,'reachGoal','free_tg_open_incy'); return true;">
+            Открыть в Incy
+          </a>
+          <div class="tc-download-row">
+            <a href="https://apps.apple.com/ru/app/incy/id6756943388"
+               class="btn btn-ghost"
+               target="_blank" rel="noopener"
+               onclick="ym(108239554,'reachGoal','free_tg_download_incy'); return true;">
+              Incy · iOS
+            </a>
+            <a href="https://play.google.com/store/apps/details?id=llc.itdev.incy&hl=ru"
+               class="btn btn-ghost"
+               target="_blank" rel="noopener"
+               onclick="ym(108239554,'reachGoal','free_tg_download_incy'); return true;">
+              Incy · Android
+            </a>
+          </div>
+          <p class="tc-hint">
+            <a href="https://api.annet.cloud/api/vpn/deeplink/open?target=happ%3A%2F%2Fadd%2Fhttps%3A%2F%2Frem.annet.cloud%3A9443%2Fapi%2Fsub%2Fo4uyGMSEXup1YDvw&amp;sub=https%3A%2F%2Frem.annet.cloud%3A9443%2Fapi%2Fsub%2Fo4uyGMSEXup1YDvw"
+               class="link"
+               target="_blank" rel="noopener"
+               onclick="ym(108239554,'reachGoal','free_tg_open_happ'); return true;">Открыть в Happ Plus</a>
+            — в российском App Store часто недоступен.
+            <a href="free-tg.html" class="link">Подробнее</a>
+          </p>
+        </div>
+      </div>
+
+      <!-- Шаг 3: Открыть бота -->
+      <div class="tc-step">
+        <div class="tc-step-head">
+          <span class="tc-step-num">3</span>
           <span class="tc-step-title">Откройте бота</span>
         </div>
-        <p class="tc-step-2-note">После подключения сервера Telegram заработает. Перейдите в бот и активируйте 7 дней бесплатного доступа.</p>
+        <p class="tc-step-2-note">Когда Telegram заработает — перейдите в бот и активируйте 7 дней бесплатного полного VPN.</p>
         <a id="openBot" href="https://t.me/annetcloud_bot"
            class="btn btn-primary btn-hud btn-large"
            style="width:100%;justify-content:center;"
-           onclick="ym(108239554,'reachGoal','bot_link'); return true;">
+           onclick="ym(108239554,'reachGoal','bot_click'); return true;">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248-1.97 9.28c-.146.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L8.984 13.64l-2.961-.924c-.644-.204-.657-.643.135-.953l11.571-4.461c.537-.194 1.006.131.833.946z"/></svg>
           Открыть бота
         </a>
@@ -293,6 +368,7 @@
       </div>
       <nav class="footer-nav">
         <a href="index.html">Главная</a>
+        <a href="free-tg.html">Telegram бесплатно</a>
         <a href="tg://resolve?domain=annetcloud_support">Поддержка</a>
       </nav>
     </div>
@@ -330,17 +406,35 @@
         var qs = [];
         var code = getStartCode();
         var promo = getStartPromo();
+        var yclid = getYclid();
         if (code) qs.push('start_code=' + encodeURIComponent(code));
         if (promo) qs.push('start_promo=' + encodeURIComponent(promo));
+        if (yclid) qs.push('yclid=' + encodeURIComponent(yclid));
         return qs.length ? '?' + qs.join('&') : '';
       }
 
-      function applyLinks() {
+      function getYclid() {
+        return new URLSearchParams(window.location.search).get('yclid') || '';
+      }
+
+      function buildBotStart() {
+        var yclid = getYclid();
         var code = getStartCode();
         var promo = getStartPromo();
-        var payload = promo
-          ? buildBotPayload('promo_', promo)
-          : buildBotPayload('code_', code);
+        if (yclid && /^\d{1,19}$/.test(yclid)) {
+          var suffix = '';
+          if (promo) suffix = '-p_' + promo.replace(/[^a-zA-Z0-9_-]/g, '').slice(0, 30);
+          else if (code) suffix = '-c_' + code.replace(/[^a-zA-Z0-9_-]/g, '').slice(0, 30);
+          var yclidPayload = 'y_' + yclid + suffix;
+          return yclidPayload.length <= 64 ? yclidPayload : ('y_' + yclid);
+        }
+        if (promo) return buildBotPayload('promo_', promo);
+        if (code) return buildBotPayload('code_', code);
+        return null;
+      }
+
+      function applyLinks() {
+        var payload = buildBotStart();
         var botHref = payload ? BOT_BASE + '?start=' + encodeURIComponent(payload) : BOT_BASE;
         var backHref = 'index.html' + buildLandingQuery();
 

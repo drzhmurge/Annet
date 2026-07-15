@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Бесплатный MTProto прокси для Telegram — Annet Cloud</title>
-  <meta name="description" content="Бесплатный MTProto прокси для Telegram. Разблокируй Telegram за 10 секунд — без регистрации, без VPN, навсегда бесплатно.">
-  <meta property="og:title" content="Бесплатный MTProto прокси для Telegram — Annet Cloud">
-  <meta property="og:description" content="Разблокируй Telegram за 10 секунд. Бесплатно, без регистрации и без VPN.">
+  <title>Бесплатный доступ к Telegram — Annet Cloud</title>
+  <meta name="description" content="Бесплатная подписка только для Telegram. Скачайте Incy, откройте конфиг в один тап — без регистрации и без карты.">
+  <meta property="og:title" content="Бесплатный доступ к Telegram — Annet Cloud">
+  <meta property="og:description" content="Бесплатная подписка только для Telegram. Скачайте Incy и подключитесь за минуту.">
   <meta property="og:type" content="website">
   <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -29,14 +29,12 @@
   <!-- /Yandex.Metrika counter -->
 
   <style>
-    /* ── Page shell ── */
     .pl-page {
       min-height: 100svh;
       display: flex;
       flex-direction: column;
     }
 
-    /* ── Header (logo-only variant) ── */
     .pl-header {
       position: sticky;
       top: 0;
@@ -65,7 +63,6 @@
       color: var(--text-muted);
     }
 
-    /* ── Hero ── */
     .pl-hero {
       flex: 1;
       display: flex;
@@ -146,57 +143,12 @@
       font-size: clamp(15px, 2vw, 17px);
       color: var(--text-muted);
       line-height: 1.65;
-      margin-bottom: 32px;
+      margin-bottom: 24px;
       max-width: 520px;
       margin-left: auto;
       margin-right: auto;
     }
 
-    /* ── Live counter ── */
-    .pl-live-bar {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: var(--bg-card);
-      border: 1px solid var(--border-card);
-      border-radius: var(--radius-lg);
-      padding: 10px 20px;
-      font-size: 14px;
-      color: var(--text-muted);
-      margin-bottom: 40px;
-      transition: border-color var(--transition);
-    }
-
-    .pl-live-bar:hover {
-      border-color: var(--accent-border);
-    }
-
-    .pl-live-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: #3ecf5d;
-      box-shadow: 0 0 6px rgba(62, 207, 93, 0.6);
-      flex-shrink: 0;
-      animation: livePulse 2.2s ease-in-out infinite;
-    }
-
-    @keyframes livePulse {
-      0%, 100% { opacity: 1; box-shadow: 0 0 6px rgba(62, 207, 93, 0.6); }
-      50% { opacity: 0.65; box-shadow: 0 0 12px rgba(62, 207, 93, 0.35); }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .pl-live-dot { animation: none; }
-    }
-
-    .pl-live-count {
-      font-weight: 700;
-      color: var(--text);
-      font-variant-numeric: tabular-nums;
-    }
-
-    /* ── Connect card ── */
     .pl-connect-wrap {
       display: flex;
       justify-content: center;
@@ -250,55 +202,46 @@
       margin-bottom: 8px;
     }
 
-    .pl-server-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      flex-wrap: wrap;
-      background: var(--bg-alt);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 12px 16px;
+    .pl-connect-hint {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.55;
       margin-bottom: 20px;
     }
 
-    .pl-server-addr {
-      font-family: 'SF Mono', 'Fira Code', 'Courier New', monospace;
-      font-size: 13px;
-      color: var(--text-muted);
-      letter-spacing: 0.02em;
-    }
-
-    .pl-server-badge {
-      font-size: 11px;
-      font-weight: 700;
-      color: #3ecf5d;
-      background: rgba(62, 207, 93, 0.1);
-      border: 1px solid rgba(62, 207, 93, 0.2);
-      border-radius: 6px;
-      padding: 3px 9px;
-      letter-spacing: 0.04em;
-      flex-shrink: 0;
-    }
-
     .pl-connect-btn-wrap {
-      margin-bottom: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 16px;
     }
 
     .pl-connect-btn-wrap .btn {
       width: 100%;
       justify-content: center;
-      padding: 16px 20px;
-      font-size: 16px;
+      padding: 14px 20px;
+      font-size: 15px;
       font-weight: 800;
+    }
+
+    .pl-download-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+
+    .pl-download-row .btn {
+      flex: 1;
+      min-width: 140px;
+      justify-content: center;
     }
 
     .pl-divider {
       display: flex;
       align-items: center;
       gap: 12px;
-      margin-bottom: 20px;
+      margin-bottom: 16px;
     }
 
     .pl-divider-line {
@@ -316,40 +259,52 @@
       flex-shrink: 0;
     }
 
-    .pl-qr-block {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .pl-qr-label {
+    .pl-secondary-note {
       font-size: 12px;
       color: var(--text-dim);
+      line-height: 1.55;
+      margin: 10px 0 16px;
+    }
+
+    .pl-copy-block {
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 12px 14px;
+      margin-bottom: 12px;
+    }
+
+    .pl-copy-url {
+      display: block;
+      font-family: 'SF Mono', 'Fira Code', 'Courier New', monospace;
+      font-size: 12px;
+      color: var(--text-muted);
+      word-break: break-all;
+      line-height: 1.45;
+    }
+
+    .pl-alt-link {
+      display: block;
       text-align: center;
+      margin-top: 8px;
+      font-size: 13px;
+      color: var(--text-dim);
     }
 
-    .pl-qr-img {
-      width: 148px;
-      height: 148px;
-      object-fit: contain;
-      background: #ffffff;
-      border-radius: 12px;
-      padding: 8px;
-      transition: transform var(--transition), box-shadow var(--transition);
+    .pl-alt-link a {
+      color: var(--text-muted);
+      text-decoration: underline;
+      text-underline-offset: 3px;
     }
 
-    .pl-qr-img:hover {
-      transform: scale(1.04);
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    .pl-alt-link a:hover {
+      color: var(--accent);
     }
 
-    /* ── Steps strip ── */
     .pl-steps-wrap {
       padding: 0 24px 64px;
     }
 
-    /* ── Benefits section ── */
     .pl-benefits {
       padding: 64px 24px;
       background: var(--bg-alt);
@@ -408,11 +363,6 @@
       justify-content: center;
       margin: 0 auto 14px;
       color: var(--accent);
-      transition: transform var(--dur-micro) var(--ease-spring);
-    }
-
-    .pl-benefit-card:hover .pl-benefit-icon {
-      transform: scale(1.1) rotate(-5deg);
     }
 
     .pl-benefit-name {
@@ -428,7 +378,6 @@
       line-height: 1.55;
     }
 
-    /* ── Upsell block ── */
     .pl-upsell {
       padding: 64px 24px;
     }
@@ -487,7 +436,6 @@
       position: relative;
     }
 
-    /* ── Responsive ── */
     @media (max-width: 860px) {
       .pl-benefits-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -501,12 +449,6 @@
 
       .pl-connect-card {
         padding: 24px 20px;
-      }
-
-      .pl-server-row {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 8px;
       }
 
       .pl-upsell-inner {
@@ -532,9 +474,6 @@
 </head>
 <body class="pl-page">
 
-  <!-- ═══════════════════════════════════════
-       HEADER
-  ═══════════════════════════════════════ -->
   <header class="pl-header">
     <div class="container pl-header-inner">
       <a href="index.html" class="logo">
@@ -546,9 +485,6 @@
 
   <main>
 
-    <!-- ═══════════════════════════════════════
-         HERO
-    ═══════════════════════════════════════ -->
     <section class="pl-hero">
       <div class="pl-hero-inner">
         <div class="pl-eyebrow reveal">
@@ -557,71 +493,96 @@
         </div>
 
         <h1 class="pl-hero-title reveal">
-          MTProto прокси<br>
-          для <span class="accent">Telegram</span>
+          Бесплатный доступ<br>
+          к <span class="accent">Telegram</span>
         </h1>
 
         <p class="pl-hero-sub reveal">
-          Telegram заблокирован в вашей сети? Подключите прокси — это займёт 10 секунд.
-          Бесплатно, без VPN и без регистрации.
+          Подписка только для Telegram — скачайте Incy, откройте конфиг в один тап.
+          Без карты и без полного VPN.
         </p>
-
-        <div class="pl-live-bar reveal" id="live-bar" aria-live="polite" aria-atomic="true">
-          <span class="pl-live-dot" aria-hidden="true"></span>
-          <span>Сейчас подключено:&nbsp;</span>
-          <span class="pl-live-count" id="live-count">—</span>
-          <span>&nbsp;пользователей</span>
-        </div>
       </div>
     </section>
 
-    <!-- ═══════════════════════════════════════
-         CONNECT CARD
-    ═══════════════════════════════════════ -->
     <div class="pl-connect-wrap">
       <div class="pl-connect-card reveal">
 
-        <div class="pl-connect-label">Сервер подключения</div>
-        <div class="pl-server-row">
-          <span class="pl-server-addr">tg.knight.annet.cloud:10443</span>
-          <span class="pl-server-badge">● Онлайн</span>
+        <div class="pl-connect-label">Шаг 1. Скачайте приложение</div>
+        <p class="pl-connect-hint">Рекомендуем Incy — доступен в российском App Store и Google Play.</p>
+
+        <div class="pl-download-row">
+          <a href="https://apps.apple.com/ru/app/incy/id6756943388"
+             class="btn btn-ghost"
+             target="_blank" rel="noopener"
+             onclick="ym(108239554,'reachGoal','free_tg_download_incy'); return true;">
+            Incy · iOS
+          </a>
+          <a href="https://play.google.com/store/apps/details?id=llc.itdev.incy&hl=ru"
+             class="btn btn-ghost"
+             target="_blank" rel="noopener"
+             onclick="ym(108239554,'reachGoal','free_tg_download_incy'); return true;">
+            Incy · Android
+          </a>
         </div>
 
+        <div class="pl-connect-label">Шаг 2. Откройте конфиг в приложении</div>
         <div class="pl-connect-btn-wrap">
-          <a href="tg://proxy?server=tg.knight.annet.cloud&port=10443&secret=eeee616e6e65742e636c6f7564270d28423533666c6f776572732e636f6d"
+          <a href="https://api.annet.cloud/api/vpn/deeplink/open?target=incy%3A%2F%2Fadd%2Fhttps%3A%2F%2Frem.annet.cloud%3A9443%2Fapi%2Fsub%2Fo4uyGMSEXup1YDvw&amp;sub=https%3A%2F%2Frem.annet.cloud%3A9443%2Fapi%2Fsub%2Fo4uyGMSEXup1YDvw"
              class="btn btn-primary btn-hud"
-             onclick="ym(108239554,'reachGoal','proxy_connect'); return true;">
+             target="_blank" rel="noopener"
+             onclick="ym(108239554,'reachGoal','free_tg_open_incy'); return true;">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
               <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
             </svg>
-            Подключить прокси
+            Открыть в Incy
           </a>
         </div>
 
         <div class="pl-divider">
           <div class="pl-divider-line"></div>
-          <span class="pl-divider-text">или сканируйте с другого устройства</span>
+          <span class="pl-divider-text">или Happ Plus</span>
           <div class="pl-divider-line"></div>
         </div>
 
-        <div class="pl-qr-block">
-          <p class="pl-qr-label">QR-код для сканирования</p>
-          <img src="assets/proxy-1.jpg" alt="QR-код для подключения прокси" class="pl-qr-img"
-               onclick="ym(108239554,'reachGoal','proxy_qr'); return true;">
+        <div class="pl-connect-btn-wrap" style="margin-bottom:0;">
+          <a href="https://api.annet.cloud/api/vpn/deeplink/open?target=happ%3A%2F%2Fadd%2Fhttps%3A%2F%2Frem.annet.cloud%3A9443%2Fapi%2Fsub%2Fo4uyGMSEXup1YDvw&amp;sub=https%3A%2F%2Frem.annet.cloud%3A9443%2Fapi%2Fsub%2Fo4uyGMSEXup1YDvw"
+             class="btn btn-ghost"
+             target="_blank" rel="noopener"
+             onclick="ym(108239554,'reachGoal','free_tg_open_happ'); return true;">
+            Открыть в Happ Plus
+          </a>
+        </div>
+        <p class="pl-secondary-note">
+          В российском App Store Happ Plus часто недоступен. Подойдут Android, другой Apple&nbsp;ID или
+          <a href="https://www.happ.su/main/" class="link" target="_blank" rel="noopener">десктоп</a>.
+        </p>
+
+        <div class="pl-divider">
+          <div class="pl-divider-line"></div>
+          <span class="pl-divider-text">или скопируйте ссылку</span>
+          <div class="pl-divider-line"></div>
         </div>
 
+        <div class="pl-copy-block">
+          <code class="pl-copy-url" id="free-tg-sub-url">https://rem.annet.cloud:9443/api/sub/o4uyGMSEXup1YDvw</code>
+        </div>
+        <button type="button" class="btn btn-ghost" id="free-tg-copy-btn" style="width:100%;justify-content:center;">
+          Скопировать ссылку подписки
+        </button>
+
+        <p class="pl-alt-link">
+          Нужен способ без приложения?
+          <a href="proxy.html">MTProto-прокси прямо в Telegram</a>
+        </p>
       </div>
     </div>
 
-    <!-- ═══════════════════════════════════════
-         3-STEP STRIP
-    ═══════════════════════════════════════ -->
     <div class="pl-steps-wrap">
       <div class="proxy-after reveal" style="max-width:640px; margin:0 auto;">
         <div class="proxy-after-step">
           <span class="proxy-after-num">1</span>
-          <span>Нажмите «Подключить прокси» — Telegram откроет диалог</span>
+          <span>Скачайте Incy из App Store или Google Play</span>
         </div>
         <div class="proxy-after-arrow">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
@@ -630,7 +591,7 @@
         </div>
         <div class="proxy-after-step">
           <span class="proxy-after-num">2</span>
-          <span>Примите подключение — значок сервера появится в настройках</span>
+          <span>Нажмите «Открыть в Incy» — конфиг добавится сам</span>
         </div>
         <div class="proxy-after-arrow">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
@@ -639,16 +600,13 @@
         </div>
         <div class="proxy-after-step">
           <span class="proxy-after-num">3</span>
-          <span>Telegram заработает — пользуйтесь без ограничений</span>
+          <span>Включите туннель в приложении — Telegram заработает</span>
         </div>
       </div>
     </div>
 
-    <!-- ═══════════════════════════════════════
-         BENEFITS
-    ═══════════════════════════════════════ -->
     <section class="pl-benefits">
-      <h2 class="pl-benefits-title reveal">Почему наш прокси</h2>
+      <h2 class="pl-benefits-title reveal">Почему это удобно</h2>
       <div class="pl-benefits-grid">
 
         <div class="pl-benefit-card reveal">
@@ -657,92 +615,59 @@
               <polyline points="20 12 20 22 4 22 4 12"/>
               <rect x="2" y="7" width="20" height="5"/>
               <line x1="12" y1="22" x2="12" y2="7"/>
-              <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/>
-              <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/>
             </svg>
           </div>
-          <div class="pl-benefit-name">Бесплатно навсегда</div>
-          <div class="pl-benefit-desc">Без ограничений по времени и трафику</div>
+          <div class="pl-benefit-name">Бесплатно</div>
+          <div class="pl-benefit-desc">Без карты и без регистрации</div>
         </div>
 
         <div class="pl-benefit-card reveal" style="transition-delay:.07s">
           <div class="pl-benefit-icon">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-              <circle cx="12" cy="7" r="4"/>
-              <line x1="18" y1="8" x2="23" y2="13"/>
-              <line x1="23" y1="8" x2="18" y2="13"/>
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
             </svg>
           </div>
-          <div class="pl-benefit-name">Без регистрации</div>
-          <div class="pl-benefit-desc">Никаких аккаунтов и личных данных</div>
+          <div class="pl-benefit-name">Только Telegram</div>
+          <div class="pl-benefit-desc">Трафик остальных приложений не трогаем</div>
         </div>
 
         <div class="pl-benefit-card reveal" style="transition-delay:.14s">
           <div class="pl-benefit-icon">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-              <polyline points="9 12 11 14 15 10"/>
+              <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
+              <line x1="12" y1="18" x2="12.01" y2="18"/>
             </svg>
           </div>
-          <div class="pl-benefit-name">Работает без VPN</div>
-          <div class="pl-benefit-desc">Прямо в Telegram, приложения не нужны</div>
+          <div class="pl-benefit-name">Через Incy</div>
+          <div class="pl-benefit-desc">Открытие конфига в один тап</div>
         </div>
 
         <div class="pl-benefit-card reveal" style="transition-delay:.21s">
           <div class="pl-benefit-icon">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <circle cx="12" cy="12" r="10"/>
-              <line x1="2" y1="12" x2="22" y2="12"/>
-              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
             </svg>
           </div>
-          <div class="pl-benefit-name">Серверы в Европе</div>
-          <div class="pl-benefit-desc">Быстрое и стабильное соединение</div>
+          <div class="pl-benefit-name">Стабильнее прокси</div>
+          <div class="pl-benefit-desc">Если MTProto рвётся — этот способ надёжнее</div>
         </div>
 
       </div>
     </section>
 
-    <!-- ═══════════════════════════════════════
-         FREE TG CROSS-PROMO
-    ═══════════════════════════════════════ -->
-    <section class="pl-upsell" style="padding-bottom:0;">
-      <div class="pl-upsell-inner reveal">
-        <div class="pl-upsell-eyebrow">Нужно стабильнее?</div>
-        <h2 class="pl-upsell-title">Бесплатная подписка только для Telegram</h2>
-        <p class="pl-upsell-sub">
-          Если MTProto рвётся — скачайте Incy и откройте конфиг в один тап.
-          Работает только Telegram; приложения нужны.
-        </p>
-        <div class="pl-upsell-actions">
-          <a href="https://api.annet.cloud/api/vpn/deeplink/open?target=incy%3A%2F%2Fadd%2Fhttps%3A%2F%2Frem.annet.cloud%3A9443%2Fapi%2Fsub%2Fo4uyGMSEXup1YDvw&amp;sub=https%3A%2F%2Frem.annet.cloud%3A9443%2Fapi%2Fsub%2Fo4uyGMSEXup1YDvw"
-             class="btn btn-primary btn-hud"
-             target="_blank" rel="noopener"
-             onclick="ym(108239554,'reachGoal','free_tg_open_incy'); return true;">
-            Открыть в Incy
-          </a>
-          <a href="free-tg.html" class="btn btn-ghost">Как подключить</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════
-         UPSELL
-    ═══════════════════════════════════════ -->
     <section class="pl-upsell">
       <div class="pl-upsell-inner reveal">
         <div class="pl-upsell-eyebrow">Нужна полная защита?</div>
         <h2 class="pl-upsell-title">Попробуйте VPN бесплатно</h2>
         <p class="pl-upsell-sub">
-          Прокси открывает только Telegram. Для защиты всего трафика и всех приложений
+          Эта подписка открывает только Telegram. Для защиты всего трафика и всех приложений
           подключите Annet VPN — 7 дней пробного периода бесплатно, без карты.
         </p>
         <div class="pl-upsell-actions">
           <a href="https://t.me/annetcloud_bot"
              class="btn btn-primary btn-hud js-bot-trial"
              target="_blank" rel="noopener"
-             onclick="ym(108239554,'reachGoal','proxy_upsell'); return true;">
+             onclick="ym(108239554,'reachGoal','free_tg_upsell'); return true;">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
               <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248-1.97 9.28c-.146.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L8.984 13.64l-2.961-.924c-.644-.204-.657-.643.135-.953l11.571-4.461c.537-.194 1.006.131.833.946z"/>
             </svg>
@@ -755,9 +680,6 @@
 
   </main>
 
-  <!-- ═══════════════════════════════════════
-       FOOTER
-  ═══════════════════════════════════════ -->
   <footer class="footer">
     <div class="container footer-inner">
       <div class="footer-brand">
@@ -765,7 +687,7 @@
       </div>
       <nav class="footer-nav">
         <a href="index.html">Главная</a>
-        <a href="free-tg.html">Telegram бесплатно</a>
+        <a href="proxy.html">MTProto прокси</a>
         <a href="https://t.me/annetcloud_bot" class="js-bot-link" target="_blank" rel="noopener"
            onclick="ym(108239554,'reachGoal','bot_click'); return true;">Бот</a>
         <a href="tg://resolve?domain=annetcloud_support">Поддержка</a>
@@ -777,40 +699,26 @@
     </div>
   </footer>
 
-  <!-- ═══════════════════════════════════════
-       SCRIPTS
-  ═══════════════════════════════════════ -->
-
-  <!-- Live stats counter -->
   <script>
     (function () {
-      var STATS_URL = 'https://api.annet.cloud/api/mtproto/proxy-stats';
-      var POLL_INTERVAL = 60000;
-      var countEl = document.getElementById('live-count');
-      var barEl = document.getElementById('live-bar');
-
-      function formatCount(n) {
-        return n.toLocaleString('ru-RU');
-      }
-
-      function loadStats() {
-        fetch(STATS_URL)
-          .then(function (r) { return r.ok ? r.json() : Promise.reject(r.status); })
-          .then(function (data) {
-            if (typeof data.ext_connections === 'number') {
-              countEl.textContent = formatCount(data.ext_connections);
-              if (barEl) barEl.title = 'Обновлено только что';
-            }
-          })
-          .catch(function () {});
-      }
-
-      loadStats();
-      setInterval(loadStats, POLL_INTERVAL);
+      var SUB = 'https://rem.annet.cloud:9443/api/sub/o4uyGMSEXup1YDvw';
+      var btn = document.getElementById('free-tg-copy-btn');
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        function done(ok) {
+          btn.textContent = ok ? 'Скопировано' : 'Не удалось скопировать';
+          if (ok) ym(108239554, 'reachGoal', 'free_tg_copy');
+          setTimeout(function () { btn.textContent = 'Скопировать ссылку подписки'; }, 2000);
+        }
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(SUB).then(function () { done(true); }).catch(function () { done(false); });
+        } else {
+          done(false);
+        }
+      });
     })();
   </script>
 
-  <!-- UTM / start_code / start_promo pass-through -->
   <script>
     (function () {
       var BOT_BASE = 'https://t.me/annetcloud_bot';
@@ -890,7 +798,6 @@
     })();
   </script>
 
-  <!-- Scroll-reveal -->
   <script>
     (function () {
       if (!document.documentElement.classList.contains('reveal-pending')) return;

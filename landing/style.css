@@ -1491,7 +1491,7 @@ html.reveal-pending .reveal.revealed {
   display: flex;
   flex-direction: row;
   gap: 40px;
-  align-items: end;
+  align-items: center;
 }
 
 .proxy-layout-main {
@@ -1611,7 +1611,7 @@ html.reveal-pending .reveal.revealed {
   border-radius: var(--radius-lg);
   padding: 24px 28px;
   width: max-content;
-  max-width: 300px;
+  max-width: 350px;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -1833,6 +1833,159 @@ html.reveal-pending .reveal.revealed {
 
 .proxy-cards .proxy-card.reveal:nth-child(1) { transition-delay: 0s; }
 .proxy-cards .proxy-card.reveal:nth-child(2) { transition-delay: 0.1s; }
+
+/* ═══════════════════════════════════════════════
+   Free TG subscription / TG help methods
+═══════════════════════════════════════════════ */
+.tg-help-layout {
+  align-items: stretch;
+  margin-bottom: 40px;
+}
+
+.tg-help-layout .proxy-layout-aside {
+  position: sticky;
+  top: 120px;
+  align-self: flex-start;
+  align-items: center;
+  max-height: calc(100vh - 140px);
+}
+
+.tg-help-layout .proxy-mascot {
+  max-height: min(520px, calc(100vh - 160px));
+  width: auto;
+  max-width: 100%;
+}
+
+.tg-help-layout .tg-help-method {
+  margin-bottom: 36px;
+}
+
+.tg-help-layout .tg-help-method:last-child {
+  margin-bottom: 0;
+}
+
+.tg-help-method-head {
+  margin-bottom: 20px;
+}
+
+.tg-help-layout .proxy-cards {
+  margin-bottom: 24px;
+}
+
+.proxy-section .cabinet-alt {
+  margin-top: 8px;
+  margin-bottom: 0;
+}
+
+.free-tg-alert {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-lg);
+  padding: 28px 32px;
+  margin-bottom: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.free-tg-alert::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--accent);
+}
+
+.free-tg-eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+
+.free-tg-title {
+  font-size: clamp(22px, 3vw, 28px);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  margin: 0 0 10px;
+}
+
+.free-tg-sub {
+  font-size: 15px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  max-width: 560px;
+}
+
+.free-tg-more {
+  flex-shrink: 0;
+  align-self: center;
+}
+
+.free-tg-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-lg);
+  padding: 28px 32px;
+}
+
+.free-tg-steps-mini {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 20px;
+  margin-bottom: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.free-tg-steps-mini span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.free-tg-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.free-tg-happ {
+  font-size: 13px;
+  color: var(--text-dim);
+  line-height: 1.55;
+}
+
+.free-tg-happ-note {
+  color: var(--text-dim);
+}
+
+@media (max-width: 560px) {
+  .free-tg-alert,
+  .free-tg-card {
+    padding: 22px 18px;
+  }
+
+  .free-tg-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .free-tg-more {
+    width: 100%;
+    justify-content: center;
+  }
+}
 
 /* ═══════════════════════════════════════════════
    Footer
@@ -2286,17 +2439,24 @@ html.reveal-pending .reveal.revealed {
   }
   .proxy-layout-main {
     width: 100%;
-}
-.proxy-cards {
-  flex-direction: column;
-}
-.proxy-card {
-  max-width: 100%;
-}
-  .proxy-layout-aside {
+  }
+  .proxy-cards {
+    flex-direction: column;
+  }
+  .proxy-card {
+    max-width: 100%;
+  }
+  .proxy-layout-aside,
+  .tg-help-layout .proxy-layout-aside {
     position: static;
-    width: 80%;
-    margin: 0 auto;
+    align-self: center;
+    width: 70%;
+    max-width: 280px;
+    margin: 8px auto 0;
+    max-height: none;
+  }
+  .tg-help-layout .proxy-mascot {
+    max-height: 320px;
   }
 
   .miniapp-layout {
