@@ -1474,6 +1474,13 @@ html.reveal-pending .reveal.revealed {
   text-align: center;
 }
 
+.how-cta-escape {
+  margin: 16px 0 0;
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
 .link {
   color: var(--accent);
   font-weight: 500;

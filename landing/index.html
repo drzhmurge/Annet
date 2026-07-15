@@ -224,7 +224,7 @@
           </div>
           <div class="step-tag">Старт</div>
           <h3 class="step-title">Открой бот</h3>
-          <p class="step-desc">Перейди в <a href="https://t.me/annetcloud_bot" class="link js-bot-link" target="_blank" rel="noopener" onclick="ym(108239554,'reachGoal','bot_click'); return true;">@annetcloud_bot</a> и активируй 7 дней бесплатного доступа - без карты.</p>
+          <p class="step-desc">Нужен рабочий Telegram. Перейди в <a href="https://t.me/annetcloud_bot" class="link js-start-gate js-bot-trial" target="_blank" rel="noopener">@annetcloud_bot</a> и активируй 7 дней бесплатного доступа — без карты.</p>
         </div>
         <div class="step-connector" aria-hidden="true">
           <span class="step-connector-line"></span>
@@ -258,7 +258,7 @@
         </div>
       </div>
 
-     <!--  <div class="apps-row">
+      <div class="apps-row reveal">
         <div class="apps-title">Поддерживаемые приложения</div>
         <div class="apps-list">
           <div class="app-chip">v2RayNG</div>
@@ -267,13 +267,14 @@
           <div class="app-chip">Happ</div>
           <div class="app-chip">Shadowrocket</div>
         </div>
-      </div> -->
+      </div>
 
       <div class="how-cta reveal">
         <a href="https://t.me/annetcloud_bot" class="btn btn-primary btn-large btn-hud btn-hud-lg js-start-gate js-bot-trial" target="_blank" rel="noopener">Начать бесплатно</a>
-      <!--   <p class="how-cta-alt">
-          Или <a href="https://my.annet.online/login" class="link js-cabinet-link" target="_blank" rel="noopener" onclick="ym(108239554,'reachGoal','web_link'); return true;">войдите в веб-кабинет</a> - триал и MTProto доступны без Telegram. Оплата подписки - через бот.
-        </p> -->
+        <p class="how-cta-escape">
+          Telegram не открывается?
+          <a href="#proxy" class="link">Вернуть доступ бесплатно</a>
+        </p>
       </div>
     </div>
   </section>
@@ -290,8 +291,8 @@
         <div class="proxy-alert-body">
           <h2 class="proxy-title">Не открывается Telegram?</h2>
           <p class="proxy-sub">
-            Если не открывается бот и не получается активировать доступ.
-            Ниже два бесплатных способа вернуть Telegram: подписка только для Telegram или MTProto-прокси.
+            Выберите вариант под вашу ситуацию — оба способа бесплатные.
+            Когда Telegram снова заработает, откройте бот и активируйте 7 дней.
           </p>
         </div>
       </div>
@@ -299,14 +300,14 @@
       <div class="proxy-layout tg-help-layout">
         <div class="proxy-layout-main">
 
-          <!-- Способ 1: бесплатная подписка -->
+          <!-- Вариант 1: Telegram совсем не открывается -->
           <div class="tg-help-method free-tg-block" id="free-tg">
             <div class="tg-help-method-head reveal">
-              <div class="free-tg-eyebrow">Способ 1</div>
-              <h3 class="free-tg-title">Бесплатная подписка</h3>
+              <div class="free-tg-eyebrow">Вариант 1</div>
+              <h3 class="free-tg-title">Telegram совсем не открывается</h3>
               <p class="free-tg-sub">
-                Скачайте Incy и откройте конфиг в один тап.
-                Работает только Telegram.
+                Скачайте Incy, откройте конфиг в один тап — туннель только для Telegram.
+                Затем зайдите в бот и активируйте доступ.
               </p>
               <a href="free-tg.html" class="btn btn-ghost free-tg-more">Подробнее</a>
             </div>
@@ -351,14 +352,14 @@
             </div>
           </div>
 
-          <!-- Способ 2: MTProto -->
+          <!-- Вариант 2: открывается, но не грузится -->
           <div class="tg-help-method proxy-method" id="mtproto">
             <div class="tg-help-method-head reveal">
-              <div class="free-tg-eyebrow">Способ 2</div>
-              <h3 class="free-tg-title">Бесплатный MTProto-прокси</h3>
+              <div class="free-tg-eyebrow">Вариант 2</div>
+              <h3 class="free-tg-title">Telegram открывается, но не грузится</h3>
               <p class="free-tg-sub">
-                Встроенный туннель прямо в Telegram — без отдельного приложения.
-                Подключите прокси, затем откройте бот и активируйте доступ.
+                Подключите MTProto-прокси прямо в Telegram — без отдельного приложения, около 10 секунд.
+                Затем откройте бот и активируйте доступ.
               </p>
             </div>
 
@@ -420,8 +421,8 @@
           <div class="cabinet-alt-eyebrow">Без Telegram</div>
           <h3 class="cabinet-alt-title">Или войдите в веб-кабинет</h3>
           <p class="cabinet-alt-sub">
-            Активируйте 7 дней бесплатно и получите MTProto. Вход по ссылке на почту — без установки Telegram.
-            Оплата подписки оформляется через бот.
+            7 дней бесплатно и MTProto — вход по ссылке на почту, без установки Telegram.
+            Оплату подписки можно оформить позже через бот, когда Telegram снова будет доступен.
           </p>
         </div>
         <div class="cabinet-alt-cta">
@@ -443,7 +444,7 @@
         <img src="assets/logo.png" alt="Annet Cloud" class="footer-logo">
       </div>
       <nav class="footer-nav">
-        <a href="https://t.me/annetcloud_bot" class="js-bot-link" target="_blank" rel="noopener" onclick="ym(108239554,'reachGoal','bot_click'); return true;">Бот</a>
+        <a href="https://t.me/annetcloud_bot" class="js-start-gate js-bot-trial" target="_blank" rel="noopener">Бот</a>
         <a href="https://my.annet.online/login" class="js-cabinet-link" target="_blank" rel="noopener" onclick="ym(108239554,'reachGoal','web_link'); return true;">Личный кабинет</a>
         <a href="tg://resolve?domain=annetcloud_support">Поддержка</a>
         <a href="#proxy">Если нет Telegram</a>
@@ -482,7 +483,7 @@
            data-gate-help
            onclick="ym(108239554,'reachGoal','gate_tg_no'); return true;">
           <span class="cta-gate-choice-label">Нет, не открывается</span>
-          <span class="cta-gate-choice-desc">Два бесплатных способа вернуть Telegram</span>
+          <span class="cta-gate-choice-desc">Выберите способ вернуть Telegram бесплатно</span>
         </a>
       </div>
     </div>
@@ -660,6 +661,7 @@
       nodes.forEach(function (el) { obs.observe(el); });
     })();
   </script>
+    <script src="//code.jivo.ru/widget/XGshhGjYnR" async></script>
 
 </body>
 </html>
