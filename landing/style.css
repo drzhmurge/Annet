@@ -536,7 +536,14 @@ a {
   display: flex;
   gap: 12px;
   flex-wrap: wrap;
-  margin-bottom: 36px;
+  margin-bottom: 14px;
+}
+
+.hero-cta-note {
+  margin: 0 0 28px;
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.5;
 }
 
 .telegram-help-hint {
@@ -2378,6 +2385,10 @@ html.reveal-pending .reveal.revealed {
     justify-content: center;
   }
 
+  .hero-cta-note {
+    text-align: center;
+  }
+
   .hero-platforms {
     justify-content: center;
   }
@@ -2586,5 +2597,178 @@ html.reveal-pending .reveal.revealed {
 
   .miniapp-feats {
     grid-template-columns: 1fr;
+  }
+}
+
+/* ═══════════════════════════════════════════════
+   CTA gate — Telegram check before bot
+═══════════════════════════════════════════════ */
+body.cta-gate-open {
+  overflow: hidden;
+}
+
+.cta-gate[hidden] {
+  display: none !important;
+}
+
+.cta-gate {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.cta-gate-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.72);
+  backdrop-filter: blur(6px);
+}
+
+.cta-gate-dialog {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 440px);
+  padding: 28px 24px 24px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.55);
+  animation: ctaGateIn 0.28s var(--ease-out-expo) both;
+}
+
+@keyframes ctaGateIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.cta-gate-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 10px;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color var(--transition), background var(--transition);
+}
+
+.cta-gate-close:hover {
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.cta-gate-eyebrow {
+  margin: 0 0 8px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.cta-gate-title {
+  margin: 0 0 10px;
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  padding-right: 28px;
+}
+
+.cta-gate-sub {
+  margin: 0 0 22px;
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--text-muted);
+}
+
+.cta-gate-choices {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.cta-gate-choice {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px 18px;
+  border-radius: var(--radius);
+  text-decoration: none;
+  transition: transform var(--dur-micro) var(--ease-out-expo), border-color var(--transition), background var(--transition);
+}
+
+.cta-gate-choice-label {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.cta-gate-choice-desc {
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--text-muted);
+}
+
+.cta-gate-choice-yes {
+  background: var(--accent);
+  color: #fff;
+  border: 1px solid transparent;
+}
+
+.cta-gate-choice-yes .cta-gate-choice-desc {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.cta-gate-choice-yes:hover {
+  background: var(--accent-hover);
+  transform: translateY(-1px);
+}
+
+.cta-gate-choice-no {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--border-card);
+}
+
+.cta-gate-choice-no:hover {
+  border-color: var(--accent-border);
+  background: var(--accent-dim);
+}
+
+.cta-gate-choice:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+@media (max-width: 480px) {
+  .cta-gate-dialog {
+    padding: 24px 18px 18px;
+  }
+
+  .cta-gate-title {
+    font-size: 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cta-gate-dialog {
+    animation: none;
   }
 }

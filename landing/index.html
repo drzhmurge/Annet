@@ -43,9 +43,8 @@
         <a href="#proxy">Если нет Telegram</a>
        <!--  <a href="https://my.annet.online/login" class="js-cabinet-link" target="_blank" rel="noopener" onclick="ym(108239554,'reachGoal','web_link'); return true;">Личный кабинет</a> -->
       </nav>
-      <a href="https://t.me/annetcloud_bot" class="btn btn-primary btn-hud js-bot-link" target="_blank" rel="noopener" onclick="ym(108239554,'reachGoal','bot_click'); return true;">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248-1.97 9.28c-.146.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L8.984 13.64l-2.961-.924c-.644-.204-.657-.643.135-.953l11.571-4.461c.537-.194 1.006.131.833.946z"/></svg>
-        Открыть бот
+      <a href="#proxy" class="btn btn-primary btn-hud">
+        Telegram не работает?
       </a>
     </div>
   </header>
@@ -72,16 +71,12 @@
           <span class="hero-sub-small"><b>От 179 рублей.</b></span>
         </p>
         <div class="hero-actions">
-          <a href="https://t.me/annetcloud_bot" class="btn btn-primary btn-large btn-hud btn-hud-lg js-bot-trial" target="_blank" rel="noopener">
+          <a href="https://t.me/annetcloud_bot" class="btn btn-primary btn-large btn-hud btn-hud-lg js-start-gate js-bot-trial" target="_blank" rel="noopener">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248-1.97 9.28c-.146.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L8.984 13.64l-2.961-.924c-.644-.204-.657-.643.135-.953l11.571-4.461c.537-.194 1.006.131.833.946z"/></svg>
             Начать бесплатно
           </a>
-<!--           <a href="#proxy" class="btn btn-ghost">Не работает Telegram?</a>
- -->        </div>
-        <p class="telegram-help-hint ">
-          Если <span class="accent-white pulse">Telegram не открывается</span> в вашей сети —
-          <a href="#proxy" class="link">два бесплатных способа вернуть доступ</a>.
-        </p>
+        </div>
+        <p class="hero-cta-note">Подключение через Telegram · 7 дней без карты</p>
         <div class="hero-platforms">
           <span>iOS</span>
           <span>Android</span>
@@ -275,7 +270,7 @@
       </div> -->
 
       <div class="how-cta reveal">
-        <a href="https://t.me/annetcloud_bot" class="btn btn-primary btn-large btn-hud btn-hud-lg js-bot-trial" target="_blank" rel="noopener">Начать бесплатно</a>
+        <a href="https://t.me/annetcloud_bot" class="btn btn-primary btn-large btn-hud btn-hud-lg js-start-gate js-bot-trial" target="_blank" rel="noopener">Начать бесплатно</a>
       <!--   <p class="how-cta-alt">
           Или <a href="https://my.annet.online/login" class="link js-cabinet-link" target="_blank" rel="noopener" onclick="ym(108239554,'reachGoal','web_link'); return true;">войдите в веб-кабинет</a> - триал и MTProto доступны без Telegram. Оплата подписки - через бот.
         </p> -->
@@ -460,6 +455,91 @@
       <p>© 2025 Annet Cloud. Сервис предназначен для обеспечения конфиденциальности и защиты трафика в сети.</p>
     </div>
   </footer>
+
+  <!-- CTA gate: ask about Telegram before opening the bot -->
+  <div class="cta-gate" id="cta-gate" hidden>
+    <div class="cta-gate-backdrop" data-gate-close></div>
+    <div class="cta-gate-dialog" role="dialog" aria-modal="true" aria-labelledby="cta-gate-title">
+      <button type="button" class="cta-gate-close" data-gate-close aria-label="Закрыть">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+      <p class="cta-gate-eyebrow">Перед стартом</p>
+      <h2 class="cta-gate-title" id="cta-gate-title">Telegram у вас открывается?</h2>
+      <p class="cta-gate-sub">
+        Бот и активация триала работают только через Telegram.
+        Если приложение не заходит — сначала верните доступ, потом продолжите.
+      </p>
+      <div class="cta-gate-choices">
+        <a href="https://t.me/annetcloud_bot"
+           class="cta-gate-choice cta-gate-choice-yes js-bot-trial"
+           target="_blank" rel="noopener"
+           onclick="ym(108239554,'reachGoal','gate_tg_yes'); return true;">
+          <span class="cta-gate-choice-label">Да, открывается</span>
+          <span class="cta-gate-choice-desc">Перейти в бот и получить 7 дней</span>
+        </a>
+        <a href="#proxy"
+           class="cta-gate-choice cta-gate-choice-no"
+           data-gate-help
+           onclick="ym(108239554,'reachGoal','gate_tg_no'); return true;">
+          <span class="cta-gate-choice-label">Нет, не открывается</span>
+          <span class="cta-gate-choice-desc">Два бесплатных способа вернуть Telegram</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var gate = document.getElementById('cta-gate');
+      if (!gate) return;
+      var dialog = gate.querySelector('.cta-gate-dialog');
+      var lastFocus = null;
+
+      function openGate() {
+        lastFocus = document.activeElement;
+        gate.hidden = false;
+        document.body.classList.add('cta-gate-open');
+        if (typeof ym === 'function') ym(108239554, 'reachGoal', 'gate_open');
+        var focusable = dialog.querySelector('.cta-gate-choice');
+        if (focusable) focusable.focus();
+      }
+
+      function closeGate() {
+        gate.hidden = true;
+        document.body.classList.remove('cta-gate-open');
+        if (lastFocus && typeof lastFocus.focus === 'function') lastFocus.focus();
+      }
+
+      document.querySelectorAll('.js-start-gate').forEach(function (el) {
+        el.addEventListener('click', function (e) {
+          e.preventDefault();
+          openGate();
+        });
+      });
+
+      gate.querySelectorAll('[data-gate-close]').forEach(function (el) {
+        el.addEventListener('click', closeGate);
+      });
+
+      var yesBtn = gate.querySelector('.cta-gate-choice-yes');
+      if (yesBtn) {
+        yesBtn.addEventListener('click', function () {
+          closeGate();
+        });
+      }
+
+      var helpBtn = gate.querySelector('[data-gate-help]');
+      if (helpBtn) {
+        helpBtn.addEventListener('click', function () {
+          closeGate();
+        });
+      }
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && !gate.hidden) closeGate();
+      });
+    })();
+  </script>
 
   <script>
     (function () {
