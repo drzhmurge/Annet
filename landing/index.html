@@ -41,10 +41,9 @@
         <a href="#features">О сервисе</a>
         <a href="#how">Подключение</a>
         <a href="#proxy">Если нет Telegram</a>
-       <!--  <a href="https://my.annet.online/login" class="js-cabinet-link" target="_blank" rel="noopener" onclick="ym(108239554,'reachGoal','web_link'); return true;">Личный кабинет</a> -->
       </nav>
-      <a href="#proxy" class="btn btn-primary btn-hud">
-        Telegram не работает?
+      <a href="https://t.me/annetcloud_bot" class="btn btn-primary btn-hud js-start-gate js-bot-trial" target="_blank" rel="noopener" >
+       Покдлючиться
       </a>
     </div>
   </header>
@@ -57,18 +56,13 @@
     <div class="hero-bg-overlay"></div>
     <div class="container hero-inner">
       <div class="hero-content">
-        <div class="hero-badge">
-          <span class="badge-dot"></span>
-          7 дней теста бесплатно
-        </div>
         <h1 class="hero-title">
           Приватные VPS <br>
           <span class="accent">для защиты трафика</span>
         </h1>
         <p class="hero-sub">
-          Небольшой персональный сервис шифрования трафика.
-          Любое количество устройств и трафик без ограничений.
-          <span class="hero-sub-small"><b>От 179 рублей.</b></span>
+           Без ограничений по устройствам и трафику. Делись с семьей и друзьями.
+          <span class="hero-sub-small"><b>7 дней бесплатно.</b></span>
         </p>
         <div class="hero-actions">
           <a href="https://t.me/annetcloud_bot" class="btn btn-primary btn-large btn-hud btn-hud-lg js-start-gate js-bot-trial" target="_blank" rel="noopener">
@@ -545,7 +539,6 @@
   <script>
     (function () {
       var BOT_BASE = 'https://t.me/annetcloud_bot';
-      var CHECK_PAGE = 'tg-check.html';
       var CABINET_URL = 'https://my.annet.online/login';
 
       function sanitizeStartParam(raw) {
@@ -569,6 +562,9 @@
         return payload.length > 64 ? payload.slice(0, 64) : payload;
       }
 
+      var YCLID_KEY = 'annet_yclid';
+      var YCLID_RE = /^\d{1,25}$/;
+
       function buildLandingQuery() {
         var qs = [];
         var code = getStartCode();
@@ -581,14 +577,23 @@
       }
 
       function getYclid() {
-        return new URLSearchParams(window.location.search).get('yclid') || '';
+        var fromUrl = new URLSearchParams(window.location.search).get('yclid') || '';
+        if (fromUrl && YCLID_RE.test(fromUrl)) {
+          try { sessionStorage.setItem(YCLID_KEY, fromUrl); } catch (e) {}
+          return fromUrl;
+        }
+        try {
+          var stored = sessionStorage.getItem(YCLID_KEY) || '';
+          if (stored && YCLID_RE.test(stored)) return stored;
+        } catch (e) {}
+        return '';
       }
 
       function buildBotStart(isTrial) {
         var yclid = getYclid();
         var code = getStartCode();
         var promo = getStartPromo();
-        if (yclid && /^\d{1,19}$/.test(yclid)) {
+        if (yclid && YCLID_RE.test(yclid)) {
           var suffix = '';
           if (promo) suffix = '-p_' + promo.replace(/[^a-zA-Z0-9_-]/g, '').slice(0, 30);
           else if (code) suffix = '-c_' + code.replace(/[^a-zA-Z0-9_-]/g, '').slice(0, 30);
@@ -618,9 +623,10 @@
         });
 
         var landingQs = buildLandingQuery();
-        var checkHref = CHECK_PAGE + landingQs;
-        document.querySelectorAll('a[href="tg-check.html"]').forEach(function (a) {
-          a.href = checkHref;
+        ['tg-check.html', 'free-tg.html', 'proxy.html', 'index.html'].forEach(function (page) {
+          document.querySelectorAll('a[href="' + page + '"]').forEach(function (a) {
+            a.href = page + landingQs;
+          });
         });
 
         var ref = promo || code;

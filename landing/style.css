@@ -2363,23 +2363,28 @@ html.reveal-pending .reveal.revealed {
     padding-top: 56px;
     padding-bottom: 56px;
     gap: 48px;
+    height: calc(100dvh - 70px);
   }
 
   .hero-visual {
     order: -1;
+    position: absolute;
+        max-width: 338px;
+        z-index: -1;
+        right: -90px;
   }
 
   .hero-fox {
-    max-height: 340px;
+    max-height: 540px;
     margin: 0 auto;
   }
 
   .hero-content {
-    text-align: center;
+   
   }
 
   .hero-sub {
-    max-width: 100%;
+    max-width: 70%;
   }
 
   .telegram-help-hint {
@@ -2388,13 +2393,7 @@ html.reveal-pending .reveal.revealed {
     margin-right: auto;
   }
 
-  .hero-actions {
-    justify-content: center;
-  }
 
-  .hero-cta-note {
-    text-align: center;
-  }
 
   .hero-platforms {
     justify-content: center;
@@ -2414,10 +2413,11 @@ html.reveal-pending .reveal.revealed {
 
   .steps {
     flex-direction: column;
-    gap: 0;
+    gap: 16px;
   }
 
   .step-connector {
+    display: none;
     flex-direction: row;
     padding: 12px 0;
     transform: rotate(90deg);
@@ -2497,7 +2497,13 @@ html.reveal-pending .reveal.revealed {
     width: 100%;
     justify-content: center;
   }
-
+  .hero-visual {
+    order: -1;
+    position: absolute;
+        max-width: 246px;
+        z-index: -1;
+        right: -90px;
+  }
 
 
   .hero-badge {

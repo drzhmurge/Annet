@@ -402,6 +402,9 @@
         return payload.length > 64 ? payload.slice(0, 64) : payload;
       }
 
+      var YCLID_KEY = 'annet_yclid';
+      var YCLID_RE = /^\d{1,25}$/;
+
       function buildLandingQuery() {
         var qs = [];
         var code = getStartCode();
@@ -414,14 +417,23 @@
       }
 
       function getYclid() {
-        return new URLSearchParams(window.location.search).get('yclid') || '';
+        var fromUrl = new URLSearchParams(window.location.search).get('yclid') || '';
+        if (fromUrl && YCLID_RE.test(fromUrl)) {
+          try { sessionStorage.setItem(YCLID_KEY, fromUrl); } catch (e) {}
+          return fromUrl;
+        }
+        try {
+          var stored = sessionStorage.getItem(YCLID_KEY) || '';
+          if (stored && YCLID_RE.test(stored)) return stored;
+        } catch (e) {}
+        return '';
       }
 
       function buildBotStart() {
         var yclid = getYclid();
         var code = getStartCode();
         var promo = getStartPromo();
-        if (yclid && /^\d{1,19}$/.test(yclid)) {
+        if (yclid && YCLID_RE.test(yclid)) {
           var suffix = '';
           if (promo) suffix = '-p_' + promo.replace(/[^a-zA-Z0-9_-]/g, '').slice(0, 30);
           else if (code) suffix = '-c_' + code.replace(/[^a-zA-Z0-9_-]/g, '').slice(0, 30);
@@ -436,13 +448,19 @@
       function applyLinks() {
         var payload = buildBotStart();
         var botHref = payload ? BOT_BASE + '?start=' + encodeURIComponent(payload) : BOT_BASE;
-        var backHref = 'index.html' + buildLandingQuery();
+        var landingQs = buildLandingQuery();
 
         var botNode = document.getElementById('openBot');
         if (botNode) botNode.href = botHref;
 
         var backNode = document.getElementById('backToLanding');
-        if (backNode) backNode.href = backHref;
+        if (backNode) backNode.href = 'index.html' + landingQs;
+
+        ['tg-check.html', 'free-tg.html', 'proxy.html', 'index.html'].forEach(function (page) {
+          document.querySelectorAll('a[href="' + page + '"]').forEach(function (a) {
+            a.href = page + landingQs;
+          });
+        });
       }
 
       applyLinks();

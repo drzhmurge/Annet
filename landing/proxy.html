@@ -736,8 +736,31 @@
         return sanitizeStartParam(new URLSearchParams(window.location.search).get('start_promo'));
       }
 
+      var YCLID_KEY = 'annet_yclid';
+      var YCLID_RE = /^\d{1,25}$/;
+
       function getYclid() {
-        return new URLSearchParams(window.location.search).get('yclid') || '';
+        var fromUrl = new URLSearchParams(window.location.search).get('yclid') || '';
+        if (fromUrl && YCLID_RE.test(fromUrl)) {
+          try { sessionStorage.setItem(YCLID_KEY, fromUrl); } catch (e) {}
+          return fromUrl;
+        }
+        try {
+          var stored = sessionStorage.getItem(YCLID_KEY) || '';
+          if (stored && YCLID_RE.test(stored)) return stored;
+        } catch (e) {}
+        return '';
+      }
+
+      function buildLandingQuery() {
+        var qs = [];
+        var code = getStartCode();
+        var promo = getStartPromo();
+        var yclid = getYclid();
+        if (code) qs.push('start_code=' + encodeURIComponent(code));
+        if (promo) qs.push('start_promo=' + encodeURIComponent(promo));
+        if (yclid) qs.push('yclid=' + encodeURIComponent(yclid));
+        return qs.length ? '?' + qs.join('&') : '';
       }
 
       function buildBotPayload(prefix, value) {
@@ -750,7 +773,7 @@
         var yclid = getYclid();
         var code = getStartCode();
         var promo = getStartPromo();
-        if (yclid && /^\d{1,19}$/.test(yclid)) {
+        if (yclid && YCLID_RE.test(yclid)) {
           var suffix = '';
           if (promo) suffix = '-p_' + promo.replace(/[^a-zA-Z0-9_-]/g, '').slice(0, 30);
           else if (code) suffix = '-c_' + code.replace(/[^a-zA-Z0-9_-]/g, '').slice(0, 30);
@@ -778,6 +801,13 @@
         var trialHref = trialPayload ? BOT_BASE + '?start=' + encodeURIComponent(trialPayload) : BOT_BASE;
         document.querySelectorAll('a.js-bot-trial').forEach(function (a) {
           a.href = trialHref;
+        });
+
+        var landingQs = buildLandingQuery();
+        ['tg-check.html', 'free-tg.html', 'proxy.html', 'index.html'].forEach(function (page) {
+          document.querySelectorAll('a[href="' + page + '"]').forEach(function (a) {
+            a.href = page + landingQs;
+          });
         });
 
         var ref = promo || code;
