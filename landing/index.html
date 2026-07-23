@@ -512,6 +512,13 @@
         });
       });
 
+      // Trial CTAs that open the bot directly (not the gate) also count as start_trial.
+      document.querySelectorAll('a.js-bot-trial:not(.js-start-gate)').forEach(function (el) {
+        el.addEventListener('click', function () {
+          if (typeof ym === 'function') ym(108239554, 'reachGoal', 'start_trial');
+        });
+      });
+
       gate.querySelectorAll('[data-gate-close]').forEach(function (el) {
         el.addEventListener('click', closeGate);
       });
